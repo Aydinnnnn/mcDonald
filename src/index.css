@@ -1,0 +1,10 @@
+/* @import url('../public/assest/font/Vazir-Regular-FD.woff2'); */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* @layer base {
+    html{
+        font-family: Vazir,system-ui, sans-serif;
+    }
+} */
