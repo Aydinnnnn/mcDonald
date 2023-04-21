@@ -4,6 +4,10 @@ interface Props {
 }
 
 const Container = ({ children }: Props) => {
-  return <div className="w-full h-full bg-[#DA291C] p-5">{children}</div>;
+  return (
+    <div className="w-full h-96 flex flex-col lg:flex-row gap-8  p-5">
+      {children}
+    </div>
+  );
 };
 export default Container;

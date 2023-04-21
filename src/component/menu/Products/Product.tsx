@@ -1,30 +1,35 @@
+import { useState } from "react";
+
 interface Props {
   image: string;
   price: number;
-  totalPrice: string;
+  totalPrice: number;
   title: string;
-  counter: string;
+  quantity: number;
 }
 
 export default function Product({
   image,
   price,
-  totalPrice,
   title,
-  counter,
 }: Props) {
+  const [count, setCount] = useState(0);
+
   return (
     <>
-      <div className="flex">
-        <div>
-          <img className="" src={image} alt="1" />
+      <div className="col-span-12  md:col-span-6 flex bg-white shadow-md rounded-md items-center justify-start ">
+        <div className="w-40 ">
+          <img className="w-full aspect-square" src={image} alt="1" />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-2 w-full">
           <p className="text-lg">{title}</p>
           <p className="">{price}</p>
-          <div className="flex justify-between">
-            <div className="flex">
-              <button className="bg-red-800 p-2">
+          <div className="flex justify-between w-full pl-4 ">
+            <div className="flex ">
+              <button
+                onClick={() => setCount(count + 1)}
+                className="bg-red-800  w-6 h-6 rounded-r-md"
+              >
                 <svg
                   className="w-full h-full"
                   viewBox="0 0 24 24"
@@ -49,9 +54,14 @@ export default function Product({
                   </g>
                 </svg>
               </button>
-              <div className="bg-[#F0F8FF] p-2">{counter}</div>
+              <div className="bg-[#F0F8FF] text-center  w-6 h-6">{count}</div>
               <div>
-                <button className="bg-red-800 p-2">
+                <button
+                  onClick={() => {
+                    count - 1 < 0 ? setCount(0) : setCount(count - 1);
+                  }}
+                  className="bg-red-800 w-6 h-6 rounded-l-md"
+                >
                   <svg
                     className="w-full h-full"
                     viewBox="0 0 24 24"
@@ -78,11 +88,10 @@ export default function Product({
                 </button>
               </div>
             </div>
-            <div className="">{totalPrice}</div>
+            <div className="">{price * count} تومان</div>
           </div>
         </div>
       </div>
-      ;
     </>
   );
 }
